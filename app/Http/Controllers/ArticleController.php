@@ -16,7 +16,8 @@ class ArticleController extends Controller
         return view('articles.index', ['articles' => $articles]);
     }
 
-    public function create(){
+    public function create()
+    {
         return view('articles.create');
     }
 
@@ -26,5 +27,10 @@ class ArticleController extends Controller
         $article->user_id = $request->user()->id;
         $article->save();
         return redirect()->route('articles.index');
+    }
+
+    public function edit(Article $article)
+    {
+        return view('articles.edit',['article' => $article]);
     }
 }
