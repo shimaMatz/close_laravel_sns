@@ -61,6 +61,10 @@ class LoginController extends Controller
             return $this->sendLoginResponse($request);
         }
 
-        // $userがnullの場合の処理は次のパートでここに書く予定
+        return redirect()->route('register.{provider}', [
+            'provider' => $provider,
+            'email' => $providerUser->getEmail(),
+            'token' => $providerUser->token,
+        ]);
     }
 }
